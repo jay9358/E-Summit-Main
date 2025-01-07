@@ -49,8 +49,8 @@ const About = forwardRef((props, ref) => {
                 <p className="text-element">
                   Get ready for the pulse of creativity and ingenuity at the
                   upcoming E-Summit, the second edition of Rajasthan's premier
-                  business conclave! Mark your calendars for February 2nd to
-                  4th, 2024, as the Entrepreneurship Cell at LNMIIT Jaipur
+                  business conclave! Mark your calendars for February 15th to
+                  16th, 2025, as the Entrepreneurship Cell at LNMIIT Jaipur
                   transforms into the epicenter of originality and innovation.
                   This flagship event is not just a gathering; it's a dynamic
                   pivot in the vibrant entrepreneurship ecosystem, connecting
