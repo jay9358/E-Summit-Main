@@ -11,15 +11,15 @@ import r from "../images/R.png";
 import sandeep from "../images/sandeep.png";
 function Events() {
   const eventsData = [
-    {
-      imageUrl: sandeep,
-      title: "Sandeep Jain",
-      description1: "DATE - 3rd Feb",
-      description2: "VENUE-TBD",
-      one: "Empowering Minds: GeeksforGeeks Founder, Sandeep Jain."
-    },
     // https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png
     {
+        imageUrl: 'https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png',
+        title: "Speaker 2",
+        description1: "TIME-TBD",
+        description2: "VENUE-TBD",
+        one: "From Vision to Victory: Lessons in Entrepreneurial Leadership and Innovation."
+      },
+      {
         imageUrl: 'https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png',
         title: "Speaker 2",
         description1: "TIME-TBD",
@@ -31,7 +31,7 @@ function Events() {
         title: "Speaker 3",
         description1: "TIME-TBD",
         description2: "VENUE-TBD",
-        one: "The Art of Disruption: Leveraging Entrepreneurial Insights for Growth and Impact."
+        one: "Empowering Minds: GeeksforGeeks Founder, Sandeep Jain."
       },
       {
         imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745251/esummit/workshop1_tqbgek.jpg',

@@ -8,6 +8,7 @@ import Sponsors from "./components/Sponsors/Sponsors";
 import Contact from "./components/Contact/Contact";
 import Competitions from "./components/Competitions/Competitions";
 import CompetitionsLoader from "./components/Competitions/Preloader/preloader";
+import Register from "./components/Registration/Register"
 import Footer from "./components/Footer/footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useRef } from "react";
@@ -79,7 +80,9 @@ function App() {
             path="/Sponsors"
             element={competitionsLoader ? <CompetitionsLoader /> : <Sponsors />}
           />
+
           <Route path="/team" element={<OurTeam />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </>

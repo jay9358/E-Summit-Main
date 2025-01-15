@@ -11,6 +11,7 @@ function Navbar() {
     { name: "Figures", container: "#figures_container", another: 0 },
     { name: "Events", container: "#Events_container", another: 0 },
     { name: "Team", container: "team", another: 6 },
+
   ],[]);
   const [set, setS] = useState(false);
   useEffect(() => {
