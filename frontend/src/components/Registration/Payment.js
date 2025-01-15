@@ -1,119 +1,222 @@
-import toast from "react-hot-toast";
-import { api_connector } from "../apiConnector";
-import { payments } from "../apis";
-import { set_payment_loading } from "../../Slices/courseSlice";
-import { clear_cart, remove_course_from_cart } from "./Cart";
+import React, { useState } from 'react';
+import mail_sender from './mail_sender';
+import './Payment.css';
 
-function load_script(src){
+const Payment = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    eventType: ''
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const eventTypes = [
+    { id: 'workshop', name: 'Workshop', price: 499 },
+    { id: 'conference', name: 'Conference', price: 999 },
+    { id: 'hackathon', name: 'Hackathon', price: 1499 }
+  ];
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const loadScript = (src) => {
     return new Promise((resolve) => {
-        const script = document.createElement("script");
-        script.src = src;
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
 
-        script.onload = () => {
-            resolve(true);
-        };
 
-        script.onerror = () => {
-            resolve(false);
-        }
-        document.body.appendChild(script);
-    })
-}
-
-export async function buy_courses(courses, token, user_details, dispatch, navigate, flag){
-    const toast_id = toast.loading("LOADING....");
-
-    try{
-        const script = load_script("https://checkout.razorpay.com/v1/checkout.js");
-
-        if(!script){
-            toast.error("RAZOR PAY SDK FAILED TO LOAD. PLEADE CHECK YOUR INTERNET CONNECTION.")
-            return false;
-        }
-
-        const order_response = await api_connector("POST", payments.CAPTURE_PAYMENT, {courses: courses}, {Authorization: `Bearer ${token}`});
-
-        console.log(order_response);
-
-        if(!order_response.data.success){
-            throw new Error(order_response.data.message);
-        }
-
-        const options = {
-            key : process.env.RAZOR_PAY_KEY_ID,
-            currency : order_response.data.order_response.currency,
-            amount: `${order_response.data.order_response.amount}`,
-            order_id: order_response.data.order_response.id,
-            name: "MEKA'S_STUDY_NOTION",
-            description: "Thank You for purchasing the Course",
-            image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ARazorpay_logo.webp&psig=AOvVaw39WvEC3fIFAgDl-gz4cBeR&ust=1717867921971000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNjXweqCyoYDFQAAAAAdAAAAABAE",
-            prefill: {
-                name: `${user_details.first_name} ${user_details.last_name}`,
-                email: user_details.email
-            },
-            handler: async function(response){
-
-                await verify_payment({...response, courses}, token, dispatch, navigate); 
-                await send_payment_success_mail(response, order_response.data.order_response.amount, token);
-
-                if(flag !== undefined){
-                    dispatch(remove_course_from_cart(flag.cart_id, flag.course_id, flag.total, token))
-                }
-                else{
-                    dispatch(clear_cart(user_details.cart._id, token));
-                }
-            }
-        }
-
-        const payment_object = new window.Razorpay(options);
-
-        payment_object.open();
-        payment_object.on("payment.failure", function(response){
-            toast.error("OOPS!! PAYMENT FAILED");
-            console.log(response.error);
-        })
-    }
-    catch(error){
-        console.log("PAYMENT API ERROR....", error);
-        toast.error(error.response.data.message || "PAYMENT API ERROR");
-    }
-    toast.dismiss(toast_id);
-}
-
-async function send_payment_success_mail(response, amount, token){
-    
+  const sendDataToSpreadsheet = async (paymentId, amount) => {
     try {
-		await api_connector("POST", payments.SEND_PAYMENT_SUCCESSFUL_MAIL,{
-            amount: amount,
-            order_id: response.razorpay_order_id,
-            payment_id: response.razorpay_payment_id
-        } ,
-        {Authorization: `Bearer ${token}`});
+      const selectedEvent = eventTypes.find(event => event.id === formData.eventType);
+      
+      const response = await fetch("https://api.apispreadsheets.com/data/L3iLWLGjJEevfkjP/", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "data": {
+            "Name": formData.name,
+            "Type": selectedEvent?.name,
+            "Email": formData.email,
+            "Amount": amount,
+            "PaymentID": paymentId,
+            "phone number": formData.phone
+          }
+        }),
+      });
+
+      if (response.status === 201) {
+        console.log('Email data sent successfully');
+       
+      } else {
+        throw new Error('Failed to send email data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Registration successful but email confirmation failed. Please contact support.');
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+
+      if (!res) {
+        throw new Error('Razorpay SDK लोड नहीं हो सका');
+      }
+
+      const selectedEvent = eventTypes.find(event => event.id === formData.eventType);
+      const amount = selectedEvent ? selectedEvent.price * 100 : 0; // Converting to paise
+
+      const options = {
+        key: 'rzp_test_1Lr0R5X91pKV9F',
+        currency: 'INR',
+        amount: amount,
+        name: 'E-Summit LNMIIT',
+        description: `Registration for ${selectedEvent?.name}`,
+        handler: async function(response) {
+          try {
+            await mail_sender(
+              formData.email, 
+              'E-Summit LNMIIT Registration', 
+              'Registration successful!'
+            );
+            await sendDataToSpreadsheet(response.razorpay_payment_id, amount/100);
+            alert('Registration successful! You will receive a confirmation email shortly.');
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Payment successful but there was an error in processing. Please contact support.');
+          }
+        },
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone
+        },
+        theme: {
+          color: '#2761c3'
+        }
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (error) {
+      setError('भुगतान शुरू करने में त्रुटि। कृपया पुनः प्रयास करें।');
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="payment-container">
+      <div className="payment-card">
+        <h2>🎯 Event Registration</h2>
+        {error && <div className="error-message">{error}</div>}
         
+        <form onSubmit={handleSubmit} className="registration-form">
+          <div className="form-group">
+            <label htmlFor="name">
+              <i className="fas fa-user"></i> Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Enter your name"
+              required
+            />
+          </div>
 
-	} catch (error) {
-		toast.error(error.response.data.message);
-	}
+          <div className="form-group">
+            <label htmlFor="email">
+              <i className="fas fa-envelope"></i> Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="example@email.com"
+              required
+            />
+          </div>
 
-}
+          <div className="form-group">
+            <label htmlFor="phone">
+              <i className="fas fa-phone"></i> Phone Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="10-digit mobile number"
+              required
+              pattern="[0-9]{10}"
+            />
+          </div>
 
-async function verify_payment(body_data, token, dispatch, navigate){
-    const toast_id = toast.loading("VERIFYING PAYMENT.....");
-    dispatch(set_payment_loading(true));
-    try{
-        const response = await api_connector("POST", payments.VERIFY_SIGNATURE, body_data, {Authorization: `Bearer ${token}`});
+          <div className="form-group">
+            <label htmlFor="eventType">
+              <i className="fas fa-calendar-alt"></i> Event Type *
+            </label>
+            <select
+              id="eventType"
+              name="eventType"
+              value={formData.eventType}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Select Event</option>
+              {eventTypes.map((event) => (
+                <option key={event.id} value={event.id}>
+                  {event.name} - ₹{event.price}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        if (!response.data.success) {
-			throw new Error(response.data.message);
-		}
+          <button 
+            type="submit" 
+            className={`submit-button ${loading ? 'loading' : ''}`}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <i className="fas fa-spinner fa-spin"></i> Processing...
+              </>
+            ) : (
+              <>
+                <i className="fas fa-check-circle"></i> Register & Pay
+              </>
+            )}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-        toast.success("PAYMENT SUCCESSFUL. REGISTRATION TO THE COURSES DONE SUCCESFULLY.");
-        navigate("/dashboard/enrolled_courses");
-    }
-    catch(error){
-        toast.error(error.response.data.message)
-        console.log(error);
-    }
-    toast.dismiss(toast_id);
-    dispatch(set_payment_loading(false));
-}
+export default Payment;

@@ -1,0 +1,228 @@
+.payment-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #43e0ff 0%, #c11ac1 50%, #2B86C5 100%);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* एनिमेटेड बैकग्राउंड शेप्स */
+.payment-container::before,
+.payment-container::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 20s infinite linear;
+}
+
+.payment-container::before {
+  top: -250px;
+  left: -250px;
+}
+
+.payment-container::after {
+  bottom: -250px;
+  right: -250px;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0% { transform: rotate(0deg) translate(0, 0); }
+  50% { transform: rotate(180deg) translate(50px, 50px); }
+  100% { transform: rotate(360deg) translate(0, 0); }
+}
+
+.payment-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #FF3CAC, #784BA0);
+  border-radius: 2px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+label i {
+  margin-right: 8px;
+  color: #784BA0;
+  transition: all 0.3s ease;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus, select:focus {
+  border-color: #784BA0;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(120, 75, 160, 0.1);
+}
+
+input:focus + label i, select:focus + label i {
+  color: #FF3CAC;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(45deg, #FF3CAC, #784BA0);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submit-button i {
+  margin-right: 8px;
+}
+
+.error-message {
+  background: rgba(254, 215, 215, 0.9);
+  color: #c53030;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(197, 48, 48, 0.2);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* इनपुट फील्ड्स के लिए होवर इफेक्ट */
+.form-group:hover input,
+.form-group:hover select {
+  border-color: #784BA0;
+}
+
+/* रेस्पॉन्सिव डिज़ाइन */
+@media (max-width: 480px) {
+  .payment-card {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  input, select, .submit-button {
+    font-size: 14px;
+  }
+}
+
+/* लोडिंग स्पिनर एनिमेशन */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading i {
+  animation: spin 1s infinite linear;
+}
+
+/* सिलेक्ट ड्रॉपडाउन स्टाइलिंग */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23784BA0' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+}
+
+/* फोकस रिंग एक्सेसिबिलिटी */
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(120, 75, 160, 0.3);
+}

@@ -5,6 +5,8 @@ import logo from "../images/logo.png";
 import navbar from "../images/navbar.png";
 import withCursor from "../Cursor/Cursor"; // Import the HOC
 import Countdown from "./Countdown/Countdown";
+import { Link } from 'react-router-dom';
+
 class LandingPage extends React.Component {
   render() {
     return (
@@ -25,10 +27,11 @@ class LandingPage extends React.Component {
           <div className="count">
             <Countdown />
           </div>
-          <div className="design_container"></div>
-          {/* <a href="https://ybc.social/pages/LNMIIT" target="_blank">
-            <button className="merch">
-              <p> M E R C H</p>
+
+          {/* Register Button */}
+          <Link to="/register" className="register-button-container">
+            <button className="register-button">
+              <p>REGISTER NOW</p>
               <div id="clip">
                 <div id="leftTop" className="corner"></div>
                 <div id="rightBottom" className="corner"></div>
@@ -38,8 +41,9 @@ class LandingPage extends React.Component {
               <span id="rightArrow" className="arrow"></span>
               <span id="leftArrow" className="arrow"></span>
             </button>
-          </a> */}
-          {/* Add other text elements as needed */}
+          </Link>
+
+          <div className="design_container"></div>
           <div className="cursor"></div>
         </div>
       </>
