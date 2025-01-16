@@ -42,10 +42,10 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 40px;
+  padding: clamp(20px, 5vw, 40px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 500px;
+  width: min(90%, 500px);
+  margin: auto;
   position: relative;
   z-index: 1;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -54,8 +54,8 @@
 h2 {
   color: #2d3748;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 28px;
+  margin-bottom: clamp(20px, 4vw, 30px);
+  font-size: clamp(24px, 5vw, 28px);
   font-weight: 700;
   position: relative;
   padding-bottom: 15px;
@@ -74,7 +74,7 @@ h2::after {
 }
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: clamp(15px, 3vw, 25px);
   position: relative;
 }
 
@@ -83,7 +83,7 @@ label {
   margin-bottom: 8px;
   color: #4a5568;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 2vw, 0.95rem);
   transition: all 0.3s ease;
 }
 
@@ -94,11 +94,11 @@ label i {
 }
 
 input, select {
-  width: 100%;
-  padding: 12px 15px;
+  width: 92%;
+  padding: clamp(10px, 2vw, 15px);
   border: 2px solid #e2e8f0;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.9);
 }
@@ -115,12 +115,12 @@ input:focus + label i, select:focus + label i {
 
 .submit-button {
   width: 100%;
-  padding: 15px;
+  padding: clamp(12px, 2.5vw, 15px);
   background: linear-gradient(45deg, #FF3CAC, #784BA0);
   border: none;
   border-radius: 12px;
   color: white;
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -187,18 +187,124 @@ input:focus + label i, select:focus + label i {
 }
 
 /* रेस्पॉन्सिव डिज़ाइन */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .payment-container {
+    padding: 15px;
+  }
+
   .payment-card {
-    padding: 20px;
+    width: min(95%, 500px);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .payment-container {
+    padding: 10px;
+    min-height: calc(100vh - 60px); /* Adjust for mobile browsers */
+  }
+
+  .payment-card {
+    width: 100%;
+    padding: 15px;
     margin: 10px;
+    border-radius: 15px;
   }
-  
+
   h2 {
-    font-size: 24px;
+    margin-bottom: 15px;
   }
-  
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  input, select {
+    padding: 10px;
+  }
+
+  .submit-button {
+    padding: 12px;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 360px) {
+  .payment-card {
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
   input, select, .submit-button {
-    font-size: 14px;
+    font-size: 13px;
+  }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) and (orientation: landscape) {
+  .payment-container {
+    padding: 10px 20px;
+  }
+
+  .payment-card {
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+}
+
+/* High-DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .payment-card {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .payment-card {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  input, select {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Better Touch Targets for Mobile */
+@media (hover: none) and (pointer: coarse) {
+  input, select, .submit-button {
+    min-height: 44px;
+  }
+
+  label {
+    padding: 5px 0;
+  }
+}
+
+/* Animation Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .payment-container::before,
+  .payment-container::after {
+    animation: none;
+  }
+
+  .submit-button {
+    transition: none;
   }
 }
 
@@ -207,7 +313,6 @@ input:focus + label i, select:focus + label i {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 .loading i {
   animation: spin 1s infinite linear;
 }

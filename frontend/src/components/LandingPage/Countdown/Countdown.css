@@ -35,9 +35,8 @@
     font-size: 18px !important;
 }
 @media (max-width:1080px){
-
     .t{
-        transform: translate(-24%, 70%);
+        transform: translate(0%,15%);
     }
 
     .countdown-wrapper{
@@ -50,28 +49,15 @@
 }
 @media (max-width:800px){
 
-    .t{
-        transform: translate(-27%, 170%);
-    }
 
     .time{
         font-size: 2.5rem;
     }
 }
-@media (max-width:650px){
 
-    .t{
-        transform: translate(-32%, 190%);
-    }
-
-
-  
-}
 @media (max-width:600px){
 
-    .t{
-        transform: translate(-32%, 250%);
-    }
+
     .time{
         font-size: 2rem;
     }
@@ -79,9 +65,7 @@
 }
 @media (max-width:500px){
 
-    .t{
-        transform: translate(-38%, 350%);
-    }
+
 
     .time{
         font-size: 1.5rem;
@@ -91,7 +75,7 @@
 @media (max-width:400px) and (min-width:320px) {
 
     .t{
-        transform: translate(-50%, 150%);
+        transform: translate(0, 150%);
     }
     .countdown-wrapper{
         margin-top: 3rem;
