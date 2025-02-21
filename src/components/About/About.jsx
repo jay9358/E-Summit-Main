@@ -1,12 +1,6 @@
 // About.jsx
 import React, { useEffect } from "react";
 import "./About.css";
-import crystal from "../images/modified_logo.png";
-import calendar from "../images/calendar.png";
-import clip from "../images/clip.png";
-import coin from "../images/coin.png";
-import money from "../images/money.png";
-import people from "../images/people.png";
 import withCursor from "../Cursor/Cursor";
 import VanillaTilt from "vanilla-tilt";
 import { forwardRef } from "react";

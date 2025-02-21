@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const withCursor = (WrappedComponent) => {
   return class WithCursor extends React.Component {

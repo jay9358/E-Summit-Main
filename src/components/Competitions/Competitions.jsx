@@ -3,11 +3,8 @@
 import React from "react";
 import "./Competitions.css";
 import Spline from "@splinetool/react-spline";
-import withCursor from "../Cursor/Cursor";
 import Card from "./Card/card";
-import expo from "../images/STARTUP_ EXPO1.png";
-import shark from "../images/shark tank.png";
-import ideathon from "../images/Post3.png";
+
 // import wolf from "../images/THE WOLF OF DALAL STREET.png";
 import quiz from "../images/BIZ QUIZ.png";
 const Competitions = () => {

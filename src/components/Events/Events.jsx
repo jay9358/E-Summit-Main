@@ -3,7 +3,6 @@ import "./events.css";
 import Card from './Card';
 import w from '../OurTeam/Images/WhatsApp Image 2025-02-20 at 19.25.19_2c35fa89.jpg'
 import w2 from '../OurTeam/Images/WhatsApp Image 2025-02-20 at 19.27.45_aa15d1a7.jpg'
-import sandeep from "../images/sandeep.png";
 function Events() {
   const eventsData = [
     // https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png
