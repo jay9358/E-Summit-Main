@@ -31,7 +31,7 @@ const Footer = () => (
             </div>
         </div>
         <div className="footer-bottom">
-            <p>© 2024 All Rights Reserved. Ecell®</p>
+            <p>© 2025 All Rights Reserved. Ecell®</p>
         </div>
     </div>
 );

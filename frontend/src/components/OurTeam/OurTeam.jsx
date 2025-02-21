@@ -27,15 +27,29 @@ const sections = [
     //   tagline: "The one who juggles numbers like a mathemagician.",
     // },
   {
-    title: "TECH TEAM",
-    lead: summitMembers.slice(4, 5),
-    team: summitMembers.slice(5, 11),
+    title: "TECH Team",
+    lead: summitMembers.slice(3, 5),
+   
     id: "tech",
     tagline: "The ones who speaks in bytes and troubleshoots in dreams.",
   },
   {
+    title: "Creative Team",
+    lead: summitMembers.slice(7, 10),
+   
+    id: "tech",
+    tagline: "Innovating with imagination to craft compelling experiences",
+  },
+  {
+    title: "Coverage Team",
+    lead: summitMembers.slice(10 , 12),
+   
+    id: "tech",
+    tagline: "Ensuring accuracy, consistency, and completeness in evaluations.",
+  },
+  {
     title: "CONTACT US",
-    lead: summitMembers.slice(21, 23),
+    lead: summitMembers.slice(5, 7),
     // team: summitMembers.slice(23, 30),
     id: "pr",
     tagline: "The one who elevate connections." ,

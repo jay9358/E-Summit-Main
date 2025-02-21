@@ -1,45 +1,33 @@
 import React from 'react';
 import "./events.css";
 import Card from './Card';
-import ash from "../images/ashneer.png";
-import amit from "../images/amitjain.png";
-import edm from "../images/edmnight.png";
-import talk from "../images/talkshow.png";
-import w1 from "../images/workshop1.jpg";
-import w2 from "../images/workshop2.jpg";
-import r from "../images/R.png";
+import w from '../OurTeam/Images/WhatsApp Image 2025-02-20 at 19.25.19_2c35fa89.jpg'
+import w2 from '../OurTeam/Images/WhatsApp Image 2025-02-20 at 19.27.45_aa15d1a7.jpg'
 import sandeep from "../images/sandeep.png";
 function Events() {
   const eventsData = [
     // https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png
     {
-        imageUrl: 'https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png',
-        title: "Speaker 2",
+        imageUrl: w,
+        title: "Vijender Chauhan",
         description1: "TIME-TBD",
         description2: "VENUE-TBD",
-        one: "From Vision to Victory: Lessons in Entrepreneurial Leadership and Innovation."
+        one: "Esteemed Drishti IAS mentor sharing expertise on civil services preparation and strategy."
       },
       {
-        imageUrl: 'https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png',
-        title: "Speaker 2",
+        imageUrl: w2,
+        title: "Paresh Gupta",
         description1: "TIME-TBD",
         description2: "VENUE-TBD",
-        one: "From Vision to Victory: Lessons in Entrepreneurial Leadership and Innovation."
+        one: "Experienced investor sharing insights on navigating markets and scaling businesses"
       },
       {
         imageUrl: 'https://res.cloudinary.com/dr0b2iifb/image/upload/v1704993566/REV4_klv16m.png',
         title: "Speaker 3",
         description1: "TIME-TBD",
         description2: "VENUE-TBD",
-        one: "Empowering Minds: GeeksforGeeks Founder, Sandeep Jain."
-      },
-      {
-        imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745251/esummit/workshop1_tqbgek.jpg',
-        title: "Workshop - 1",
-        description1: "TIME-TBD",
-        description2: "VENUE-TBD",
-        one: "Startup building by experienced veterans"
-      },
+        one: "AI company CEO sharing insights on innovation, industry trends, and future technologies."
+      }
       // {
       //   imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745251/esummit/workshop2_joyqmx.jpg',
       //   title: "Workshop - 2",

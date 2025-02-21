@@ -28,20 +28,7 @@ class LandingPage extends React.Component {
             <Countdown />
           </div>
 
-          {/* Register Button */}
-          <Link to="/register" className="register-button-container">
-            <button className="register-button">
-              <p>REGISTER NOW</p>
-              <div id="clip">
-                <div id="leftTop" className="corner"></div>
-                <div id="rightBottom" className="corner"></div>
-                <div id="rightTop" className="corner"></div>
-                <div id="leftBottom" className="corner"></div>
-              </div>
-              <span id="rightArrow" className="arrow"></span>
-              <span id="leftArrow" className="arrow"></span>
-            </button>
-          </Link>
+    
 
           <div className="design_container"></div>
           <div className="cursor"></div>

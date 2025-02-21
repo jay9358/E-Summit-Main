@@ -20,7 +20,7 @@ const Competitions = () => {
       time: "TIME-TBD",
       venue: "VENUE-TBD",
       register:
-        "https://unstop.com/conferences/startup-expo-e-summit-lnm-institute-of-information-technology-lnmiit-jaipur-849058",
+        "https://www.cityscope.media/experiences/67aa614f588df84fb3d9c4f2",
     },
     {
       imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745250/esummit/shark_tank_pbvfqv.png',
@@ -30,7 +30,7 @@ const Competitions = () => {
       time: "TIME-TBD",
       venue: "VENUE-TBD",
       register:
-        "https://unstop.com/competitions/shark-tank-e-summit-lnm-institute-of-information-technology-lnmiit-jaipur-849015",
+        "https://www.cityscope.media/experiences/67aa614f588df84fb3d9c4f2",
     },
     {
       imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745252/esummit/Post3_lsrena.png',
@@ -40,26 +40,8 @@ const Competitions = () => {
       time: "TIME-TBD",
       venue: "VENUE-TBD",
       register:
-        "https://unstop.com/competitions/ideathon-e-summit-lnm-institute-of-information-technology-lnmiit-jaipur-847782",
-    },
-    {
-      imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745251/esummit/THE_WOLF_OF_DALAL_STREET_ulgode.png',
-      title: "The Wolf of Dalal Street",
-      description:
-        "Master the Wall Street Bull: Dive into stock market investing with savvy decision-making!",
-      time: "TIME-TBD",
-      venue: "VENUE-TBD",
-      register: "",
-    },
-    {
-      imageUrl: 'https://res.cloudinary.com/dqcrzyxnt/image/upload/q_auto/f_auto/v1704745244/esummit/BIZ_QUIZ_lbz9eu.png',
-      title: "Biz Quiz",
-      description:
-        "Exciting Quiz testing your entrepreneurial brilliance and business intelligence",
-      time: "TIME-TBD",
-      venue: "VENUE-TBD",
-      register: "https://unstop.com/quiz/bizquiz-e-summit-lnm-institute-of-information-technology-lnmiit-jaipur-872803",
-    },
+        "https://www.cityscope.media/experiences/67aa614f588df84fb3d9c4f2",
+    }
   ];
 
   let competitionText = "";

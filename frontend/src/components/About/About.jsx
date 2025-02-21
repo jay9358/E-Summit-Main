@@ -49,8 +49,8 @@ const About = forwardRef((props, ref) => {
                 <p className="text-element">
                   Get ready for the pulse of creativity and ingenuity at the
                   upcoming E-Summit, the second edition of Rajasthan's premier
-                  business conclave! Mark your calendars for February 15th to
-                  16th, 2025, as the Entrepreneurship Cell at LNMIIT Jaipur
+                  business conclave! Mark your calendars for February 22nd to
+                  23rd, 2025, as the Entrepreneurship Cell at LNMIIT Jaipur
                   transforms into the epicenter of originality and innovation.
                   This flagship event is not just a gathering; it's a dynamic
                   pivot in the vibrant entrepreneurship ecosystem, connecting
@@ -96,7 +96,7 @@ const About = forwardRef((props, ref) => {
                       alt="img"
                     />
                   </div>
-                  <div className="figures_heading">25L+</div>
+                  <div className="figures_heading">4Cr+</div>
                   <div className="figures_text">
                     Raised in last
                     <br />
@@ -111,7 +111,7 @@ const About = forwardRef((props, ref) => {
                       alt="img"
                     />
                   </div>
-                  <div className="figures_heading">10+</div>
+                  <div className="figures_heading">20+</div>
                   <div className="figures_text">Events</div>
                 </div>
                 <div className="figures_line"></div>
@@ -122,7 +122,7 @@ const About = forwardRef((props, ref) => {
                       alt="img"
                     />
                   </div>
-                  <div className="figures_heading">4+</div>
+                  <div className="figures_heading">10+</div>
                   <div className="figures_text">Workshops</div>
                 </div>
                 <div className="figures_line"></div>
@@ -133,7 +133,7 @@ const About = forwardRef((props, ref) => {
                       alt="img"
                     />
                   </div>
-                  <div className="figures_heading">7+</div>
+                  <div className="figures_heading">15+</div>
                   <div className="figures_text">Investors</div>
                 </div>
               </div>
