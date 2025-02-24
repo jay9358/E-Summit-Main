@@ -4,6 +4,8 @@ import w3 from "../OurTeam/Images/WhatsApp Image 2025-02-21 at 20.51.03_435ebc2b
 import w4 from "../OurTeam/Images/WhatsApp Image 2025-02-21 at 21.14.51_d1ce4a53.jpg"
 import w5 from "../OurTeam/Images/WhatsApp Image 2025-02-22 at 00.52.32_5adca5dd.jpg"
 import w6 from "../OurTeam/Images/WhatsApp Image 2025-02-22 at 00.50.38_ee71c0cd.jpg"
+import w7 from "../OurTeam/Images/WhatsApp Image 2025-02-24 at 03.31.56_f6a3d54f.jpg"
+import w8 from "./Images/WhatsApp Image 2025-02-24 at 19.45.57_5614cab2.jpg"
 const data = [
   {"name": "Harsh Koringa", "linkedin": "https://www.linkedin.com/in/harsh-koringa-4a3530256", "instagram": "https://www.instagram.com/harsh_koringa_?igsh=MmVlMjlkMTBhMg%3D%3D&utm_source=qr"},
   {"name": "Priyanshu Jain", "linkedin": "https://www.linkedin.com/in/priyanshu-jain-695a641a2", "instagram": "https://www.instagram.com/priyanshu_4803?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"},
@@ -97,7 +99,8 @@ export const summitMembers = [
     { id: 11, name: 'Shivi Jha', title: 'Coverage Head',  photo: w2,instagram: '' },
     
     { id: 12, name: 'Shreyansh Jain', title: 'Coverage Head',  photo: w,instagram: '' },
-  
+    {id:13,name: "Harsh Koringa",title: 'PR Head',  photo: w8,linkedin: "https://www.linkedin.com/in/harsh-koringa-4a3530256", instagram: "https://www.instagram.com/harsh_koringa_?igsh=MmVlMjlkMTBhMg%3D%3D&utm_source=qr"},
+    {id:14,name: "Deepanshu Gupta",title: 'PR Head',  photo: w7, linkedin: "https://www.linkedin.com/in/deepanshu-gupta-676b35213/", instagram: "https://www.instagram.com/deepanshu_gupta1235/"},
   ];
   for (const member of summitMembers) {
     const matchingData = newData.find((entry) => entry.name.toLowerCase() === member.name.toLowerCase());

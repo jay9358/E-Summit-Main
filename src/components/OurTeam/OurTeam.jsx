@@ -41,6 +41,13 @@ const sections = [
     tagline: "Innovating with imagination to craft compelling experiences",
   },
   {
+    title: "PR Team",
+    lead: summitMembers.slice(12, 14),
+   
+    id: "tech",
+    tagline: "Innovating with imagination to craft compelling experiences",
+  },
+  {
     title: "Coverage Team",
     lead: summitMembers.slice(10 , 12),
    
